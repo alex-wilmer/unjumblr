@@ -1,0 +1,13 @@
+template(name='splash')
+  i.fa.fa-times(class='{{$ "exitClass"}}')
+
+  .splash
+    .title.jumbled(class='{{$ "jumbledClass"}}') #{titleJumbled}
+
+  .splash(class='{{$ "splashClass"}}')
+    .title.unjumbled(class='{{$ "unjumbledClass"}}') unjumblr
+
+  form.login(class='{{$ "loginClass"}}')
+    input(class='{{$ "inputClass"}}' type='{{inputType}}' name='userInfo' placeholder='{{loginPlaceholder}}')
+
+  .error(class='{{$ "errorClass"}}') {{{$ "error"}}}

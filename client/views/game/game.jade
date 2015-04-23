@@ -1,0 +1,10 @@
+template(name='game')
+  .game-title(class='{{$ "gameTitleClass"}}') {{$ 'gameTitle'}}
+
+  .letters(class='{{$ "lettersClass"}}')
+    +each letters
+      .letter(class='index{{index}}') #{letter}
+
+  .score SCORE: {{$ "score"}}
+
+  .timer {{$ "time"}}

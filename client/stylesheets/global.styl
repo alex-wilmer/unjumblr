@@ -1,0 +1,239 @@
+@import url('http://fonts.googleapis.com/css?family=Gudea:400,700');
+@import url('http://fonts.googleapis.com/css?family=Lato:300');
+
+// nib & other resets
+global-reset()
+
+html,
+body
+  height 100%
+
+body
+  background #2E3241
+  color #afb1be
+  font-family 'Gudea', sans-serif
+
+  *
+    user-select none
+
+// Visibility
+.hide
+  display none
+
+// Positioning
+.pull-left
+  float left
+
+.pull-right
+  float right
+
+place(x, y)
+  transform translateX(-(x)%) translateY(-(y)%)
+  position absolute
+  left (x)%
+  top (y)%
+
+// Transition Helper
+slow = 1s
+fast = 0.35s
+transition(type)
+  transition type fast ease
+
+// Animation Helper
+createAnimationClass(name)
+  .{name}
+    animation name ease-out fast
+    animation-fill-mode forwards
+
+// Define Animations
+flip(name, a, z)
+  @keyframes {name} {
+    from {
+      transform: rotateY((a)deg)
+    }
+    to {
+      transform: rotateY((z)deg)
+    }
+  }
+  createAnimationClass(name)
+
+fade(name, a, z)
+  @keyframes {name} {
+    from {
+      opacity: a
+    }
+    to {
+      opacity: z
+    }
+  }
+  createAnimationClass(name)
+
+translate(name, x1, y1, x2, y2)
+  @keyframes {name} {
+    from {
+      place(x1, y1)
+    }
+    to {
+      place(x2, y2)
+    }
+  }
+  createAnimationClass(name)
+
+// Construct Animation Classes
+flip(flip-out, 0, 90)
+flip(flip-in, 270, 0)
+fade(fade-out, 1, 0)
+fade(fade-in, 0, 1)
+translate(move-up, 50, 65, 50, 45)
+translate(move-down, 50, 45, 50, 65)
+
+// Header
+headerHeight = 80px
+
+header
+  height headerHeight
+  line-height headerHeight
+  padding 0 25px
+
+.user
+  font-weight bold
+
+.sign-out
+  font-size 1.2em
+  cursor pointer
+
+// Main Conent Area
+main
+  height 'calc(100% - %s)' % headerHeight
+
+// Title Splash
+.splash
+  place(50, 35)
+  display inline-block
+  font-size 10vw
+  cursor default
+  width 80%
+  text-align center
+
+  +above(800px)
+    font-size 75px
+
+  +below(450px)
+    font-size 54px
+
+.title
+  font-weight bold
+
+.title.unjumbled
+  transform rotateY(270deg)
+
+.login
+  place(50, 70)
+  opacity 0
+
+  input
+    border 3px solid #666
+    border-radius 50px
+    background transparent
+    color #afb1be
+    outline none
+    padding 20px
+    text-align center
+
+    +above(800px)
+      border none
+      font-size 70px
+      font-weight bold
+
+    +below(800px)
+      text-transform uppercase
+      font-size 0.8em
+
+.buttons
+  place(50, 55)
+  width 75%
+
+.button
+  display block
+  padding 20px
+  border 5px solid
+  border-radius 50px
+  font-size 1.3em
+  font-weight bold
+  text-align center
+  cursor pointer
+
+.button + .button
+  margin-top 40px
+
+.error
+  place(50, 90)
+  width 250px
+  text-align center
+  font-size 1.2em
+  color rgb(219, 62, 62)
+
+.fa-times
+  place(95, 2)
+  cursor pointer
+  font-size 3em
+  opacity 0
+
+// Lobby
+.lobby-title
+  place(50, 30)
+  font-size 2em
+  opacity 0
+
+.lobby-title > p + p
+  margin-top 40px
+
+.lobby-title span
+  padding 0 10px
+  border 3px solid
+  border-radius 15px
+
+// Game
+.game-title
+  place(50, 30)
+  font-weight bold
+  font-size 5em
+  opacity 1
+
+.letters
+  place(50, 40)
+  width 80%
+  text-align center
+  font-weight bold
+  font-size 5em
+  opacity 1
+
+.letter
+  size 70px 85px
+  text-align center
+  display inline-block
+  border-radius 15px
+  border 3px solid
+  transform rotateZ(0deg)
+  transition all 0.3s ease
+
+  &.active
+    color #2ECC7E
+
+  &.folded
+    transform rotateY(90deg)
+
+.letter + .letter
+  margin-left 5px
+
+.score,
+.timer
+  font-family 'Lato', sans-serif
+
+.score
+  place(5, 95)
+  font-size 2em
+
+.timer
+  place(95, 95)
+  font-size 3em

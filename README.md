@@ -1,3 +1,3 @@
-# Meteor Boilerplate
+# unjumblr
 
-This boilerplate includes Iron Router, ES6, Jade & Stylus/Jeet/Rupture.
+A fun word unscrambling game. Can you get the highest score or beat your friends in an decphring duel?

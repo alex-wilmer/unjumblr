@@ -12,3 +12,10 @@ cryptoquick:stylus-multi
 iron:router
 grigio:babel
 coffeescript
+http
+meteorhacks:fast-render
+accounts-base
+accounts-password
+accounts-github
+fortawesome:fontawesome
+jquery

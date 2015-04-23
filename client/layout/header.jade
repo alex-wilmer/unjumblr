@@ -1,2 +1,8 @@
 template(name='header')
   header
+    if userInfo
+      .user.pull-left Welcome {{$ 'userInfo'}}
+      if currentUser
+        .sign-out.pull-right
+          i.fa.fa-sign-out
+          span Sign Out
