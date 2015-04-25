@@ -1,8 +1,17 @@
 let $ = Session;
 
+Template.lobby.events({
+  'keyup input': function (event) {
+    if (event.keyCode === 27) {
+      cancel();
+    }
+  }
+})
+
 Template.lobby.rendered = () => {
   let goTo = route => {
     $.set('lobbyTitleClass', 'fade-out')
+    jQuery('body').unbind('keyup');
     delay(300, () => {
       Router.go(route);
     });
