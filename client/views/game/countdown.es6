@@ -1,4 +1,4 @@
-let  // this style is interesting
+let  // this style is visually interesting (not so user friendly though)
            $ = Session
   ,     tick = 600
   , fadeTime = 400
@@ -14,7 +14,7 @@ countDown = (callback) => {
     });
   });
 
-  delay(tick * 2 + fadeTime, () => {
+  delay(tick * 2, () => {
     $.set('gameTitleClass', 'fade-out');
     delay(fadeTime, () => {
       $.set('gameTitleClass', '');
@@ -22,7 +22,7 @@ countDown = (callback) => {
     });
   });
 
-  delay(tick * 3 + fadeTime, () => {
+  delay(tick * 3, () => {
     $.set('gameTitleClass', 'fade-out');
     delay(fadeTime, () => {
       $.set('gameTitleClass', '');
@@ -30,7 +30,7 @@ countDown = (callback) => {
     });
   });
 
-  delay(tick * 4 + fadeTime, () => {
+  delay(tick * 4, () => {
     $.set('gameTitleClass', 'fade-out');
     delay(fadeTime, () => {
       $.set('gameTitleClass', '');

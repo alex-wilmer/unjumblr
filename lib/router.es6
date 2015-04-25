@@ -24,10 +24,14 @@ Router.route('/game', {
   name: 'game'
 });
 
+Router.route('/scores', {
+  name: 'scores'
+});
+
 Router.route('/rooms', {
   name: 'rooms'
 });
 
-Router.route('/room/:_id', () => {
+Router.route('/room/:_id', function () {
 
 });

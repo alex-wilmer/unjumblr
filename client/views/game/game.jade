@@ -1,10 +1,17 @@
 template(name='game')
-  .game-title(class='{{$ "gameTitleClass"}}') {{$ 'gameTitle'}}
+  .game
+    .game-title(class='{{$ "gameTitleClass"}}') {{$ 'gameTitle'}}
 
-  .letters(class='{{$ "lettersClass"}}')
-    +each letters
-      .letter(class='index{{index}}') #{letter}
+    .letters(class='{{$ "lettersClass"}}')
+      +each letters
+        .letter.folded(class='index{{index}}') #{letter}
 
-  .score SCORE: {{$ "score"}}
+    .game-over(class='{{$ "gameOverClass"}}')
+      p Press <span class="border">P</span> to play again!
+      p Press <span class="border">S</span> to view high scores!
 
-  .timer {{$ "time"}}
+    .score SCORE: {{$ "score"}}
+
+    .timer {{$ "time"}}
+
+    .back Press <span class="border">esc</span> to go back to the lobby

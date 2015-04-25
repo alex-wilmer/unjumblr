@@ -29,6 +29,10 @@ delay = (ms, fn) => {
   return setTimeout(fn, ms);
 };
 
+setNext = (fn) => {
+  return setTimeout(fn);
+};
+
 loop = (ms, fn) => {
   return setInterval(fn, ms);
 };

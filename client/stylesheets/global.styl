@@ -68,14 +68,19 @@ fade(name, a, z)
   }
   createAnimationClass(name)
 
-translate(name, x1, y1, x2, y2)
+shake(name)
   @keyframes {name} {
-    from {
-      place(x1, y1)
-    }
-    to {
-      place(x2, y2)
-    }
+  	0% { transform: translate(2px, 1px) rotate(0deg) }
+  	10% { transform: translate(-1px, -2px) rotate(-1deg) }
+  	20% { transform: translate(-3px, 0px) rotate(1deg) }
+  	30% { transform: translate(0px, 2px) rotate(0deg) }
+  	40% { transform: translate(1px, -1px) rotate(1deg) }
+  	50% { transform: translate(-1px, 2px) rotate(-1deg) }
+  	60% { transform: translate(-3px, 1px) rotate(0deg) }
+  	70% { transform: translate(2px, 1px) rotate(-1deg) }
+  	80% { transform: translate(-1px, -1px) rotate(1deg) }
+  	90% { transform: translate(2px, 2px) rotate(0deg) }
+  	100% { transform: translate(0, 0) rotate(0) }
   }
   createAnimationClass(name)
 
@@ -84,8 +89,7 @@ flip(flip-out, 0, 90)
 flip(flip-in, 270, 0)
 fade(fade-out, 1, 0)
 fade(fade-in, 0, 1)
-translate(move-up, 50, 65, 50, 45)
-translate(move-down, 50, 45, 50, 65)
+shake(shake)
 
 // Header
 headerHeight = 80px
@@ -179,21 +183,27 @@ main
   font-size 3em
   opacity 0
 
+p + p
+  margin-top 40px
+
+.border
+  padding 0 10px
+  border 3px solid
+  border-radius 15px
+
 // Lobby
 .lobby-title
   place(50, 30)
   font-size 2em
   opacity 0
 
-.lobby-title > p + p
-  margin-top 40px
-
-.lobby-title span
-  padding 0 10px
-  border 3px solid
-  border-radius 15px
+.not-ready
+  color #545867
 
 // Game
+.game
+  size 100%
+
 .game-title
   place(50, 30)
   font-weight bold
@@ -208,6 +218,9 @@ main
   font-size 5em
   opacity 1
 
+  +below(1000px)
+    font-size 8vw
+
 .letter
   size 70px 85px
   text-align center
@@ -217,8 +230,14 @@ main
   transform rotateZ(0deg)
   transition all 0.3s ease
 
+  +below(1000px)
+    size 7% 8vw
+
   &.active
     color #2ECC7E
+
+  &.active.shake
+    color #df2950
 
   &.folded
     transform rotateY(90deg)
@@ -237,3 +256,33 @@ main
 .timer
   place(95, 95)
   font-size 3em
+
+.game-over
+  place(50, 70)
+  font-size 2em
+  opacity 0
+
+.back
+  place(50, 94)
+
+//high scores
+.high-scores
+  text-align center
+
+  .title
+    font-size 2em
+
+.high-score
+  text-align left
+  width 250px
+  margin 10px auto
+  font-size 1.2em
+
+.high-score > div
+  display inline-block
+
+.high-score > div:first-child
+  width 150px
+
+.high-score > div:last-child
+  float right

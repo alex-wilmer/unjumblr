@@ -1,0 +1,10 @@
+template(name='scores')
+  .high-scores(class='{{$ "highScoresClass"}}')
+    .title High Scores
+    +each scores
+      .high-score
+        .player #{player.username}
+        .dots ........
+        .number #{score}
+
+  .back(class='{{$ "highScoresClass"}}') Press <span class="border">esc</span> to go back to the lobby
