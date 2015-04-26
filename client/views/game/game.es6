@@ -156,7 +156,7 @@ Template.game.rendered = () => {
       }
     }
 
-    else if (! $.get('inputLock')) {
+    //else if (! $.get('inputLock')) {
       let chosenLetter = String.fromCharCode(event.keyCode).toLowerCase()
         , letterIndex =
             $.get('jumbledWord').indexOf(chosenLetter, numberOfChosenLetters);
@@ -169,7 +169,7 @@ Template.game.rendered = () => {
         )
           .addClass('folded');
 
-        delay(500, () => {
+        //delay(0, () => {
           let jumbledWord = $.get('jumbledWord')
             , letterToSwap = jumbledWord[numberOfChosenLetters];
 
@@ -183,8 +183,8 @@ Template.game.rendered = () => {
             .addClass('active');
           // add letter to 'guessed word'
           validGuess(chosenLetter);
-          $.set('inputLock', false);
-        });
+          //$.set('inputLock', false); // I didn't actually need this.
+        //});
       }
 
       else if (letterIndex === numberOfChosenLetters) {
@@ -222,7 +222,7 @@ Template.game.rendered = () => {
             });
           }
         });
-      }
+    //  }
     }
   });
 };
