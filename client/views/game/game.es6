@@ -136,13 +136,13 @@ Template.game.rendered = () => {
   getWord();
 
   // Key Input Handler
-  jQuery('body').keyup(event => {
-    if (event.keyCode === 27) {
+  jQuery('body').keydown(event => {
+    if (event.keyCode === 27) { // 'esc'
       leaveGame('lobby');
     }
 
     else if (gameIsOver) {
-      if (event.keyCode === 80) {
+      if (event.keyCode === 80) { // 'p'
         $.set('gameOverClass', 'fade-out');
         $.set('score', 0);
         jQuery('.letter').addClass('folded');
@@ -151,10 +151,23 @@ Template.game.rendered = () => {
         gameIsOver = false;
       }
 
-      else if (event.keyCode === 83) {
+      else if (event.keyCode === 83) { // 's'
         leaveGame('scores');
       }
     }
+
+    if (event.keyCode === 8) { // backspace
+      event.preventDefault();
+      if (numberOfChosenLetters > 0) {
+        jQuery('.letter.index' + (numberOfChosenLetters - 1))
+          .removeClass('active');
+        guess = guess.substr(0, guess.length - 1);
+        console.log(guess);
+        numberOfChosenLetters -= 1; // no --
+      }
+    }
+
+    else {
 
     //else if (! $.get('inputLock')) {
       let chosenLetter = String.fromCharCode(event.keyCode).toLowerCase()
@@ -223,6 +236,7 @@ Template.game.rendered = () => {
           }
         });
     //  }
+      }
     }
   });
 };

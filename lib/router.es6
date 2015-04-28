@@ -32,6 +32,10 @@ Router.route('/rooms', {
   name: 'rooms'
 });
 
+Router.route('/multi', {
+  name: 'multi'
+});
+
 Router.route('/room/:_id', function () {
 
 });
